@@ -1,11 +1,11 @@
 {% extends 'base.jinja2' %}
 
-{% block subtitle %} Create Donation % endblock subtitle%}
+{% block subtitle %} Create Donation {% endblock subtitle%}
 
 {% block content %}
 <form method="POST">
     <label for ="name-input">Name:</label><input id="name-input" type="text" name="name">
-    <label for ="amount-input">Amount:</label><input id="Amount-input" type="text" amount="amount">
-    <input type="submit" value="Create Donation">
+    <label for ="amount-input">Amount:</label><input id="amount-input" type="text" name="amount">
+    <input type="submit" value="create">
 </form>
 {% endblock content %}
