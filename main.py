@@ -11,11 +11,22 @@ app = Flask(__name__)
 def home():
     return redirect(url_for('all'))
 
+
 @app.route('/donations/')
 def all():
     donations = Donation.select()
     return render_template('donations.jinja2', donations=donations)
-    
+
+
+@app.route('/create', methods=['GET', 'POST'])
+def create():
+    if request.method == 'POST':
+        donation = Donation(donor=request.form['name'], value=request.form['amount'])
+        donation.save()
+        return redirect(url_for('home'))
+    else:
+        return render_template('create.jinja2')
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 6738))
